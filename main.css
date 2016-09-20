@@ -136,6 +136,15 @@ a{
 .heading-1{
 	font-weight: bold;
 }
+.heading-1 a{
+	text-decoration: none;
+	color: #333;
+	-webkit-transition: all 0.3s; /* Safari */
+    transition: all 0.3s;
+}
+.heading-1 a:hover{
+	color: #069;
+}
 @media screen and (min-width: 768px) {
 	ul{
 		padding-left: 15px;
