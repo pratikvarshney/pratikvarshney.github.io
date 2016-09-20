@@ -2,10 +2,12 @@ window.onload = function() {
 	document.body.onscroll = updateHeader;
 	setMenu();
 	hideMenu();
+	document.getElementById("header").onclick = showMenu;
+	document.getElementById("logo-img").onclick = showMenu;
 }
 
 function setMenu() {
-	var headerList = document.getElementsByClassName("content")[0].getElementsByClassName("title");
+	var headerList = document.getElementById("content").getElementsByClassName("title");
 	var menu = document.getElementById("menu");
 	var menuData = document.getElementById("menu-data");
 	document.getElementById("menu-title").onclick = hideMenu;
@@ -36,7 +38,7 @@ function showMenu() {
 	content.style.height = "0";
 	content.style.overflow = "hidden";
 	content.style.opacity = "0";
-	document.getElementsByTagName("header")[0].style.display = "none";
+	document.getElementById("header").style.display = "none";
 }
 
 function hideMenu() {
@@ -50,14 +52,14 @@ function hideMenu() {
 	content.style.height = (contentBody.clientHeight) + "px";;
 	content.style.overflow = "visible";
 	content.style.opacity = "1";
-	document.getElementsByTagName("header")[0].style.display = "";
+	document.getElementById("header").style.display = "";
 }
 
 function updateHeader() {
 	var doc = document.documentElement;
 	var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
 	var currentIndex = -1;
-	var headerList = document.getElementsByClassName("content")[0].getElementsByClassName("title");
+	var headerList = document.getElementById("content").getElementsByClassName("title");
 	for (var i = 0; i < headerList.length; i++) {
 		if (headerList[i].getBoundingClientRect().top < 0) {
 			currentIndex = i;
@@ -65,7 +67,7 @@ function updateHeader() {
 			break;
 		}
 	}
-	var h = document.getElementsByTagName("header")[0];
+	var h = document.getElementById("header");
 	var margin = 0;
 	var html = "";
 	if (currentIndex != -1) {
