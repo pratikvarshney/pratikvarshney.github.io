@@ -3,132 +3,43 @@
 	<title>
 		Pratik Varshney
 	</title>
-	<link rel="stylesheet" type="text/css" href="normalize.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<style type="text/css">
-		.clearfix:after {
-			visibility: hidden;
-			display: block;
-			font-size: 0;
-			content: " ";
-			clear: both;
-			height: 0;
-			}
-		* html .clearfix             { zoom: 1; } /* IE6 */
-		*:first-child+html .clearfix { zoom: 1; } /* IE7 */
-		body{
-			background-color: #f1f1f1;
-			text-align: justify;
-		}
-		header{
-			width: 100%;
-		}
-		ul{
-			padding-left: 0px;
-		}
-		ul li{
-			list-style-position: inside;
-		}
-		.profile-outer{
-			margin: 100px auto 50px auto !important;
-		}
-		.box{
-			width: 96%;
-			max-width: 1000px;
-			margin: 100px auto;
-			background-color: #fff;
-			border-radius: 4px;
-			border-bottom: 2px solid #ccc;
-		}
-		.wrapper{
-			max-width: 900px;
-			margin: 0 auto;
-			padding: 25px;
-		}
-		.logo{
-			margin: 0 auto;
-			width: 200px;
-		}
-		.logo img{
-			width: 150px;
-			height: 150px;
-			border-radius: 100%;
-			margin: -90px 20px 20px 20px;
-			border: 5px solid #f9f9f9;
-			box-shadow: 0px 0px 5px 0px #ccc;
-		}
-		.profile-text{
-			font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-			text-align: center;
-		    margin: 0;
-		}
-		.name{
-			color: #333;
-			font-size: 24px;
-		}
-		.headline{
-			margin-top: 5px;
-			color: #888;
-			font-size: 15px;
-			font-weight: 300;
-		}
-		a{
-			color: #069;
-		}
-		.title{
-			color: #666;
-			font-size: 24px;
-			text-transform: uppercase;
-			margin-top: 10px;
-			text-align: center;
-			border-top: 1px solid #eee;
-			border-bottom: 1px solid #eee;
-			background-color: #f9f9f9;
-		}
-		.details{
-			line-height: 2;
-		}
-		.details .left{
-			float: none;
-		}
-		.details .right{
-			float: none;
-			color: #666;
-		}
-		.info{
-			font-size: 14px;
-			color: #333;
-		}
-		.heading-1{
-			font-weight: bold;
-		}
-		@media screen and (min-width: 768px) {
-			ul{
-				padding-left: 15px;
-			}
-			ul li{
-				list-style-position: outside;
-			}
-		    .name{
-		        font-size: 36px;
-		    }
-		    .headline{
-		    	margin-top: 7px;
-				font-size: 16px;
-				font-weight: 100;
-			}
-		    .title{
-		    	text-align: left;
-		    }
-		    .details .left{
-		    	float:left;
-		    }
-		    .details .right{
-		    	float:right;
-		    }
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="normalize.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
+<script type="text/javascript">
+	window.onload = function() {
+		document.body.onscroll = updateHeader;
+	}
+
+	function updateHeader() {
+		var doc = document.documentElement;
+		var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+		var currentIndex = -1;
+		var headerList = document.getElementsByClassName("content")[0].getElementsByClassName("title");
+		for (var i = 0; i < headerList.length; i++) {
+			if (headerList[i].getBoundingClientRect().top < 0) {
+				currentIndex = i;
+			} else {
+				break;
+			}
+		}
+		var h = document.getElementsByTagName("header")[0];
+		var margin = 0;
+		var html = "";
+		if (currentIndex != -1) {
+			html = headerList[currentIndex].outerHTML;
+			if (currentIndex + 1 < headerList.length) {
+				var offset = headerList[currentIndex + 1].getBoundingClientRect().top - headerList[currentIndex].clientHeight;
+				if (offset < 0) {
+					margin = offset;
+				}
+			}
+		}
+		h.innerHTML = html;
+		h.style.marginTop = margin;
+	}
+</script>
 <body>
 	<header>
 		&nbsp;
