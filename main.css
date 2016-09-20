@@ -17,6 +17,7 @@ header{
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: 10;
 }
 ul{
 	padding-left: 0px;
@@ -32,6 +33,34 @@ ul li{
 }
 header .title{
 	box-shadow: 0 2px 15px 0 #f2f2f2;
+}
+#menu, #content{
+	-webkit-transition: all 1s; /* Safari */
+    transition: all 1s;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+#content{
+	z-index: 1;
+}
+#menu{
+	z-index: 2;
+}
+#menu .logo{
+	width: 100%;
+}
+#menu .title .logo{
+	text-align: center;
+}
+#menu .logo img{
+	width: 60px;
+	height: 60px;
+	margin: 0 auto;
+}
+#menu .logo .name{
+	padding: 20px;
 }
 .box{
 	width: 96%;
