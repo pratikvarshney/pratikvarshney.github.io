@@ -24,7 +24,10 @@
 			width: 100%;
 		}
 		ul{
-			padding-left: 15px;
+			padding-left: 0px;
+		}
+		ul li{
+			list-style-position: inside;
 		}
 		.profile-outer{
 			margin: 100px auto 50px auto !important;
@@ -96,7 +99,12 @@
 			font-weight: bold;
 		}
 		@media screen and (min-width: 768px) {
-			
+			ul{
+				padding-left: 15px;
+			}
+			ul li{
+				list-style-position: outside;
+			}
 		    .name{
 		        font-size: 36px;
 		    }
