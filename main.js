@@ -39,6 +39,7 @@ function showMenu() {
 	content.style.overflow = "hidden";
 	content.style.opacity = "0";
 	document.getElementById("header").style.display = "none";
+	window.scrollTo(0, 0);
 }
 
 function hideMenu() {

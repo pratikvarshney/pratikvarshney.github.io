@@ -52,8 +52,8 @@ header .title{
 	box-shadow: 0 2px 15px 0 #f2f2f2;
 }
 #menu, #content{
-	-webkit-transition: all 1s; /* Safari */
-    transition: all 1s;
+	-webkit-transition: opacity 1s; /* Safari */
+    transition: opacity 1s;
     position: absolute;
     width: 100%;
     top: 0;
