@@ -25,6 +25,18 @@ ul{
 ul li{
 	list-style-position: inside;
 }
+.arrow{
+	float: right;
+	opacity: 0.4;
+	-webkit-transition: all 0.5s; /* Safari */
+    transition: all 0.5s;
+}
+.title:hover .arrow{
+	opacity: 1;
+}
+.title:hover{
+	color: #000;
+}
 .profile-outer{
 	margin: 100px auto 50px auto !important;
 }
@@ -33,6 +45,8 @@ ul li{
 }
 .title{
 	cursor: pointer;
+	-webkit-transition: all 0.5s; /* Safari */
+    transition: all 0.5s;
 }
 header .title{
 	box-shadow: 0 2px 15px 0 #f2f2f2;
@@ -145,12 +159,28 @@ a{
 .heading-1 a:hover{
 	color: #069;
 }
+.hidden-arrow{
+	float: left;
+	visibility: hidden;
+}
 @media screen and (min-width: 768px) {
 	ul{
 		padding-left: 15px;
 	}
 	ul li{
 		list-style-position: outside;
+	}
+	.arrow{
+		opacity: 0;
+	}
+	.hidden-arrow{
+		display: none;
+	}
+	#menu .arrow{
+		opacity: 0.25;
+	}
+	#menu .title:hover .arrow{
+		opacity: 1;
 	}
     .name{
         font-size: 36px;
