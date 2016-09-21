@@ -176,6 +176,14 @@ a{
 	.hidden-arrow{
 		display: none;
 	}
+	#menu{
+		margin-top: 100px;
+		margin-bottom: 100px;
+	}
+	#menu-title{
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
 	#menu .arrow{
 		opacity: 0.25;
 	}
