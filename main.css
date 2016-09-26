@@ -208,3 +208,6 @@ a{
     	float:right;
     }
 }
+@media print {
+   #header { display: none !important; }
+}

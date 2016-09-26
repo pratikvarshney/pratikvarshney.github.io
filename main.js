@@ -30,7 +30,7 @@ function setMenu() {
 function showMenu() {
 	var menu = document.getElementById("menu");
 	var menuData = document.getElementById("menu-data");
-	menu.style.height = (menuData.clientHeight) + "px";
+	menu.style.height = "";
 	menu.style.overflow = "visible";
 	menu.style.opacity = "1";
 	var content = document.getElementById("content");
@@ -50,7 +50,7 @@ function hideMenu() {
 	menu.style.opacity = "0";
 	var content = document.getElementById("content");
 	var contentBody = document.getElementById("content-body");
-	content.style.height = (contentBody.clientHeight) + "px";;
+	content.style.height = "";
 	content.style.overflow = "visible";
 	content.style.opacity = "1";
 	document.getElementById("header").style.display = "";
