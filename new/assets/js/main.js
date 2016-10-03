@@ -1,5 +1,5 @@
 window.onload = function() {
-	document.body.onscroll = updateHeader;
+	window.onscroll = updateHeader;
 	setMenu();
 }
 
@@ -56,8 +56,9 @@ function showSection(id) {
 function animateScroll(x, y, duration) {
 	var steps = Math.floor(duration / 10);
 	var stepSize = 1 / steps;
-	var xOffset = window.scrollX;
-	var yOffset = window.scrollY;
+	var doc = document.documentElement;
+	var xOffset = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
+	var yOffset = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
 	for (var i = 0; i < steps; i++) {
 		animateScrollDelay((x * stepSize * i) + xOffset, (y * stepSize * i) + yOffset, duration * stepSize * i);
 	}
