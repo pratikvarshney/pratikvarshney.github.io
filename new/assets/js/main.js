@@ -1,6 +1,7 @@
 window.onload = function() {
 	window.onscroll = updateHeader;
 	setMenu();
+	updateHeader();
 }
 
 function updateHeader(){
