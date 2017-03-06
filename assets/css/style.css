@@ -342,8 +342,7 @@ header{
     margin: 0 auto;
 }
 .hidden{
-	height: 0;
-    visibility: hidden;
+    display: none;
 }
 .show-courses{
 	color: #4ab;
