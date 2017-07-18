@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv=“Content-Type” content=“text/html; charset=utf-8”>
+	<title>Pratik Varshney</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+	<script type="text/javascript" src="assets/js/main.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script type="text/javascript" src="assets/js/ng/app.js"></script>
+</head>
+
+<body ng-app="main" ng-controller="MainController">
+	<header id="header">
+		<div class="close" onclick="hideMenu()" >
+			<i class="fa fa-close" aria-hidden="true"></i>
+		</div>
+		<div id="header-item-list">
+			
+		</div>
+	</header>
+	<div id="content">
+
+		<section id="main">
+
+			<div id="main-content" class="width-wrapper">
+				<div class="name-wrapper">
+					<div class="name">
+						<div class="name-title">{{data.name}}</div>
+						<hr>
+						<div class="name-subtitle">{{data.subtitle}}</div>
+					</div>
+					<div class="contact-info">
+						<a ng-repeat="contact in data.contact" class="tooltip" target="_blank" href="{{contact.href}}" tooltip="{{contact.tooltip}}"><i class="{{contact.iconclass}}"></i></a>
+					</div>
+				</div>
+			</div>
+
+			<nav id="nav" class="nav-absolute">
+				<div id="nav-menu" class="nav-link box-padding nav-menu" onclick="showMenu()">
+					<i class="fa fa-bars" aria-hidden="true"></i>
+				</div>
+				<div id="nav-body" class="width-wrapper">
+				</div>
+			</nav>
+
+		</section>
+
+		<div id="data-section" class="data-section">
+			<section id="{{data.section.education.id}}">
+				<div class="width-wrapper">
+					
+
+					<div class="section-title">{{data.section.education.title}}</div>
+					
+					<div class="content-row" ng-repeat="content in data.section.education.contentrow">
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<i class="{{content.left.iconclass}}" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="inner-box">
+								<div class="section-subtitle">{{content.left.university}}</div>
+								<div class="degree">{{content.left.degree}}</div>
+								<div class="date-range">{{content.left.date}}</div>
+								<div class="show-courses" onclick="toggleCourses(this);">View courses</div>
+								<div>
+									<ol class="courses hidden">
+										<li ng-repeat="course in content.left.courses">{{course}}</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<i class="{{content.right.iconclass}}" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="inner-box">
+								<div class="section-subtitle">{{content.right.university}}</div>
+								<div class="degree">{{content.right.degree}}</div>
+								<div class="date-range">{{content.right.date}}</div>
+								<div class="show-courses" onclick="toggleCourses(this);">View courses</div>
+								<div>
+									<ol class="courses hidden">
+										<li ng-repeat="course in content.right.courses">{{course}}</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					
+				</div>
+			</section>
+
+			<section id="{{data.section.skills.id}}">
+				<div class="width-wrapper">
+					
+					<div class="section-title">{{data.section.skills.title}}</div>
+					<div class="content-row" ng-repeat="content in data.section.skills.contentrow">
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-{{content.left.iconsize}}">
+									<i class="{{content.left.iconclass}}" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="section-subtitle">{{content.left.subtitle}}</div>
+
+							<div class="lang-block">
+								<div ng-repeat="item in content.left.lang">{{item}}</div>
+							</div>
+							<div class="clearfix"></div>
+
+						</div>
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-{{content.right.iconsize}}">
+									<i class="{{content.right.iconclass}}" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="section-subtitle">{{content.right.subtitle}}</div>
+
+							<div class="lang-block">
+								<div ng-repeat="item in content.right.lang">{{item}}</div>
+							</div>
+							<div class="clearfix"></div>
+
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					
+				</div>
+			</section>
+
+			<section id="experience">
+				<div class="width-wrapper">
+
+					<div class="section-title">Work Experience</div>
+					<div class="content-row">
+						<div class="content-box center">
+							<div class="section-sub-logo">
+								<div class="font-110">
+									<i class="fa fa-laptop" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="inner-box">
+								<div class="section-subtitle">SDE Intern</div>
+								<div class="degree">Amazon</div>
+								<div class="date-range">May 2017 - Aug 2017</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="content-row">
+						<div class="content-box center">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-70">
+									<i class="fa fa-credit-card" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="section-subtitle">1. Internal Tools Development</div>
+							<div class="details">Designed, code, tested, deployed and monitored various backend as well as frontend components of a web based application for Amazon during Summer 2017 Internship</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="content-row">
+						<div class="content-box center">
+							<div class="section-sub-logo">
+								<div class="font-110">
+									<i class="fa fa-laptop" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="inner-box">
+								<div class="section-subtitle">Software Engineer</div>
+								<div class="degree">Paytm (One97 Communications Ltd.)</div>
+								<div class="date-range">June 2015 - July 2016</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="content-row">
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-70">
+									<i class="fa fa-credit-card" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="section-subtitle">1. Pre-Auth / Capture flow</div>
+							<div class="details">Implemented Pre-Authorization and Capture flow for Credit Card transactions allowing customers to authorize payment and merchants to capture payment separately.</div>
+						</div>
+
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-70">
+									<i class="fa fa-server" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="section-subtitle">2. Message Translation Web Server</div>
+							<div class="details">Developed real time financial message translation application capable of handling more than 1000 requests/second.</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="content-row">
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-70">
+									<i class="fa fa-database" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="section-subtitle">3. Database Migration Application</div>
+							<div class="details">Developed multi-threaded application for migrating data from SQL Database to NoSQL Database with a speed of over 100,000 records in less than 10 seconds.</div>
+						</div>
+
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-70">
+									<i class="fa fa-calendar" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="section-subtitle">4. Scheduler Application</div>
+							<div class="details">Developed report scheduling application which handled and delivered multiple reports with over 1,000,000 of records. All this had to be done without choking the network or affecting the real time payment gateway transactions being catered by the same resources.</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="content-row">
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-70">
+									<i class="fa fa-users" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="section-subtitle">5. API Based Merchant On-boarding System</div>
+							<div class="details">Developed an API based merchant on-boarding system to allow 3rd party merchant on-boarding applications like Salesforce to integrate with Paytm.</div>
+						</div>
+
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-70">
+									<i class="fa fa-line-chart" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="section-subtitle">6. SQL Query Optimization and Code Refactoring</div>
+							<div class="details">Achieved up to 10 times speed up while optimising SQL queries being used in the existing system. Refactored the existing code of a module to enforce Model-View-Controller Design Pattern.</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+				</div>
+			</section>
+
+			<section id="projects">
+				<div class="width-wrapper">
+
+					<div class="section-title">Projects</div>
+					
+					<div class="content-row">
+					
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-25">
+									<span>Android</span>
+								</div>
+							</div>
+							<div class="section-subtitle">Foodinator</div>
+							<div class="year">(March 2017)</div>
+							<div class="languages">Languages used: Android, Java, PHP, SQL</div>
+							<div class="details">Foodinator is an android application which allows users (donors) to donate food and consumers (food banks and underprivileged people) to collect and distribute food with the help of volunteers. This application simplifies the process by allowing donors to make a request for food pickup at their convenient location, the app then identifies nearby volunteers and redirects them to the donors for food pickup which is then transported to the nearby food banks and later to the underprivileged people. This app serves as a bridge to solve the food crisis in cities where there is wastage of food and no means of transporting the food within food lifespan and avoid any food wastage by transporting from one location to another in quick and efficient way. It also utilizes the powerful machine learning techniques to analyze and classify the food to be picked up by the volunteer and distribute it efficiently to various food banks based on the needs and capacity of the food banks.
+
+							<p align="center"><i>- Won the "Most Viable Startup Hack" award at TrojanHacks 2.0 held at University of Southern California. -</i></p>
+							</div>
+						</div>
+						
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>C++</span>
+								</div>
+							</div>
+							<div class="section-subtitle">Mirage</div>
+							<div class="year">(April 2017)</div>
+							<div class="languages">Languages and Technologies used: C++, OpenCV, Microsoft Cognitive Services APIs</div>
+							<div class="details">Mirage is a full Cognitive Photo application which detect your emotions and accordingly talks to you to proceed to the steps of taking the perfect picture and the generates auto captions for the photo. Firstly the application will detect you emotion and appropriately synthesis a speech based on your current emotion. Then come the photo cleaning part where a video (ie frames of pictures) of about 5-6 sec is recorded and fed to the system. The system builds a great noise free picture. This noise free picture is then fed to the server which uses 3 cognitive models to find the following: The person in the picture, his/her current emotion and the place where he/she is at that moment. Uses the output of all these we extrapolate the entire caption and tag it to the photo. The final photo is noise free and auto captioned.
+
+							<p align="center"><i>- Won the "LA Hacks Top 4 - 11" award out of 150+ Teams in LA Hacks 2017 held at UCLA. -</i></p>
+							</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="content-row">
+
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<i class="fa fa-code" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="section-subtitle"><a target="_blank" href="https://bitbucket.org/pratikvarshney/competitive-programming/src">Competitive Programming &rarr;</a></div>
+							<div class="year">(2013 - Present)</div>
+							<div class="languages">Languages used: C, C++, Java, JavaScript</div>
+							<div class="details">Solved hundreds of programming problems on Sphere Online Judge <a target="_blank" href="http://www.spoj.com/users/pratzvarz/">(SPOJ)</a>, Project Euler, HackerEarth, Google Code Jam and CodeChef. My solutions are available <a target="_blank" href="https://bitbucket.org/pratikvarshney/competitive-programming/src">here</a>.</div>
+						</div>
+
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>C++</span>
+								</div>
+							</div>
+							<div class="section-subtitle">AI Game Agent and Game Server for Multiplayer Mode</div>
+							<div class="year">(2016)</div>
+							<div class="languages">Language used:C++</div>
+							<div class="details">Winner of Gang Wars (2-Player turn based game) Competition against 61 agents. Developed an Artificial Intelligent Agent for 2-Player turn based game Gang Wars (similar to Chess) and a game server to allow competing 2 agents.</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="content-row">
+
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>JS</span>
+								</div>
+							</div>
+							<div class="section-subtitle">Real Time Notification Application</div>
+							<div class="year">(2016)</div>
+							<div class="languages">Languages used: JavaScript, HTML, CSS, PHP, SQL</div>
+							<div class="details">Web based application to reduce the communication gap between various port community stakeholders by sharing controlled information with respective stakeholders in real time thereby improving cooperation and efficiency of the shipment system. Built during Supply Chain Digital Transformation Hackathon (held at University of Southern California) in a team of 5 members.</div>
+						</div>
+
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>C++</span>
+								</div>
+							</div>
+							<div class="section-subtitle">First Order Logic Solver</div>
+							<div class="year">(2016)</div>
+							<div class="languages">Language used:C++</div>
+							<div class="details">An application to answer First order logic queries based on user defined knowledge base.</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="content-row">
+
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>JS</span>
+								</div>
+							</div>
+							<div class="section-subtitle">Piano Composer</div>
+							<div class="year">(2016)</div>
+							<div class="languages">Languages used: JavaScript, HTML5, CSS3</div>
+							<div class="details">Web based application to allow users to record, edit and play polyphonic tones. Inspired from Nokia Composer Application.</div>
+						</div>
+
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>C++</span>
+								</div>
+							</div>
+							<div class="section-subtitle"><a target="_blank" href="https://bitbucket.org/pratikvarshney/computational-modeling-of-decision-making-in-stem-cells">Computational modeling of decision making in Stem cells &rarr;</a></div>
+							<div class="year">(2015)</div>
+							<div class="languages">Languages used: C++, Java, MATLAB, Python</div>
+							<div class="details">GUI application to analyse the life cycle of Stem, Transit Amplifying and Terminally Differentiated Cells in 3-dimensional space.</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="content-row">
+
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>C++</span>
+								</div>
+							</div>
+							
+							<div class="section-subtitle"><a target="_blank" href="https://bitbucket.org/pratikvarshney/biometric-data-acquisition-application">BioMetric Data Acquisition Application &rarr;</a></div>
+							<div class="year">(2014)</div>
+							<div class="languages">Languages and frameworks used: C++, Qt, OpenCV</div>
+							<div class="details">GUI application for Face Detection/Extraction, Recognition and Fingerprint Detection/Extraction using OpenCV and Qt library. Used by Aligarh Muslim University for biometric data collection.</div>
+						</div>
+
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-25">
+									<span>MATLAB</span>
+								</div>
+							</div>
+							<div class="section-subtitle">MultiTest and MOST Framework</div>
+							<div class="year">(2014)</div>
+							<div class="languages">Language used: MATLAB</div>
+							<div class="details">Implemented a paper (by Oya Aran, et al.; "An incremental framework based on cross validation for estimating the architecture of a multilayer perceptron"; International journal of Pattern Recognition and ArtificialIntelligence, Vol.23, No. 2 (2009), 159-190) and analysed its performance on credit card fraud dataset.</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="content-row">
+
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>C#</span>
+								</div>
+							</div>
+							<div class="section-subtitle">Projectinminds.com</div>
+							<div class="year">(2014)</div>
+							<div class="languages">Languages used: HTML, CSS, JavaScript, SQL, C#, ASP.NET</div>
+							<div class="details">In a team of 8, we developed a website (now defunct) to manage different projects and to provide mentors in different fields. The aim of this site was to help students in their projects as well as provide them with new ideas to work on. It also served as a place to store all their projects and get them reviewed.</div>
+						</div>
+
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>C</span>
+								</div>
+							</div>
+							<div class="section-subtitle"><a target="_blank" href="https://bitbucket.org/pratikvarshney/compiler_lex_yacc">BASIC Compiler &rarr;</a></div>
+							<div class="year">(2014)</div>
+							<div class="languages">Language used: C</div>
+							<div class="details">Console application to translate BASIC Language program into Three Address Code using lex and yacc.</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="content-row">
+
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>C</span>
+								</div>
+							</div>
+							<div class="section-subtitle"><a target="_blank" href="https://bitbucket.org/pratikvarshney/genetic-algorithm-simulator">Genetic Algorithm Simulator &rarr;</a></div>
+							<div class="year">(2015)</div>
+							<div class="languages">Language used: C</div>
+							<div class="details">Console application to perform line fit using selection, crossover and mutation to simulate genetic algorithm.</div>
+
+						</div>
+
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>C</span>
+								</div>
+							</div>
+							<div class="section-subtitle"><a target="_blank" href="https://bitbucket.org/pratikvarshney/fuzzy-logic-controller-flc">Fuzzy Logic Controller &rarr;</a></div>
+							<div class="year">(2015)</div>
+							<div class="languages">Language used: C</div>
+							<div class="details">Console application to make decision based on the given rule base and membership table.</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="content-row">
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>Java</span>
+								</div>
+							</div>
+							<div class="section-subtitle"><a target="_blank" href="https://bitbucket.org/pratikvarshney/pushdown-automaton-simulator">Pushdown automaton simulator &rarr;</a></div>
+							<div class="year">(2014)</div>
+							<div class="languages">Language used: Java</div>
+							<div class="details">Console application to test the acceptance of an input string for given Pushdown automaton tuple.</div>
+						</div>
+
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>Java</span>
+								</div>
+							</div>
+							<div class="section-subtitle"><a target="_blank" href="https://bitbucket.org/pratikvarshney/deterministic-finite-automata-simulator">Deterministic Finite Automata simulator &rarr;</a></div>
+							<div class="year">(2014)</div>
+							<div class="languages">Language used: Java</div>
+							<div class="details">Console application to simulate Deterministic Finite Automaton by taking 5-tuple input and generating minimization table, equivalent states, new set of states and transition table.</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="content-row">
+
+						<div class="content-box left">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>C++</span>
+								</div>
+							</div>
+							<div class="section-subtitle"><a target="_blank" href="https://bitbucket.org/pratikvarshney/image-compression">Image Compression &rarr;</a></div>
+							<div class="year">(2014)</div>
+							<div class="languages">Language used: C++</div>
+							<div class="details">Console application to compress ASCII and binary PGM (Portable Gray Map) files using RLE and Fixed length encoding.</div>
+						</div>
+
+						<div class="content-box right">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-50">
+									<span>Java</span>
+								</div>
+							</div>
+							<div class="section-subtitle"><a target="_blank" href="https://bitbucket.org/pratikvarshney/image-compression">Paint Program &rarr;</a></div>
+							<div class="year">(2012)</div>
+							<div class="languages">Language used: Java</div>
+							<div class="details">Paint Program to draw basic shapes (line, rectangle, ellipse, square, circle, etc) and free hand drawing. User can select width and height of RoundedRectangle arc, and can configure stroke size, line color and fill color. UNDO, REDO and CLEAR_ALL options are also available.</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+				</div>
+			</section>
+			
+			<section id="{{data.section.awards.id}}">
+				<div class="width-wrapper">
+
+					<div class="section-title">{{data.section.awards.title}}</div>
+					<div class="content-row">
+						<div class="content-box center width-75">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-90">
+									<i class="{{data.section.awards.iconclass}}" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="inner-box">
+								<ul>
+									<li ng-repeat="item in data.section.awards.contentrow">{{item}}</li>
+								</ul>
+							</div>
+						</div>
+
+
+						<div class="clearfix"></div>
+					</div>
+
+				</div>
+			</section>
+
+			<section id="extra">
+				<div class="width-wrapper">
+
+					<div class="section-title">Extra Curricular</div>
+					<div class="content-row">
+						<div class="content-box center width-75">
+							<div class="section-sub-logo">
+								<div class="sub-logo-box font-90">
+									<i class="fa fa-paperclip" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="inner-box">
+								<ul>
+									<li ng-repeat="item in data.section.extra.contentrow">{{item}}</li>
+								</ul>
+							</div>
+						</div>
+
+
+						<div class="clearfix"></div>
+					</div>
+
+				</div>
+			</section>
+
+		</div>
+
+	</div>
+	<footer id="footer">Designed by Pratik Varshney</footer>
+
+</body>
+</html>
