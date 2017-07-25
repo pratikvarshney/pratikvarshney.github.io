@@ -138,12 +138,17 @@ footer{
     text-align: center;
     font-size: 2rem;
 }
+.contact-info a .label-text{
+	margin-left: 0.5rem;
+	font-size: 1.75rem;
+}
 .contact-info a, .contact-info a i{
 	font-size: 2rem;
 	color: #f2f2f2;
 }
 .contact-info a{
 	margin: 0 0.32em;
+	text-decoration: none;
 }
 .logo{
 	text-align: center;
